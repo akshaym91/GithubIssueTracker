@@ -35,33 +35,33 @@
             <h3 class="text-muted">Github Issue Tracker</h3>
         </div>
         <div class="jumbotron">
-            <h1>'Allo, 'Allo!</h1>
-            <p class="lead">Always a pleasure scaffolding your apps.</p>
+            <h1>Welcome!</h1>
+            <p class="lead">Enter the repository you would like to track</p>
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1">https://github.com/</span>
-                <input type="text" class="form-control" placeholder="repository" aria-describedby="basic-addon1">
+                <input id="url" type="text" class="form-control" placeholder="repository" aria-describedby="basic-addon1">
             </div>
             <br/>
-            <p><a class="btn btn-lg btn-success" href="#"><span class="glyphicon glyphicon-search"> Track</span></a></p>
+            <p><a id="trackButton" class="btn btn-lg btn-success" href="#"><span class="glyphicon glyphicon-search"> Track</span></a></p>
         </div>
         <div>
             <ul class="list-group">
-                <li class="list-group-item">
-                    <span class="badge">14</span> Total open issues
-                </li>
-                <li class="list-group-item">
-                    <span class="badge">12</span> Opened in the last 24 hours
-                </li>
-                <li class="list-group-item">
-                    <span class="badge">3</span> Opened more than 24 hours ago but less than 7 days ago
-                </li>
-                <li class="list-group-item">
-                    <span class="badge">1</span> Opened more than 7 days ago
-                </li>
+                <a href="#" class="list-group-item">
+                    <span id="totalOpenIssues" class="badge">0</span> Total open issues
+                </a>
+                <a href="#" class="list-group-item">
+                    <span id="last24hours" class="badge">0</span> Opened in the last 24 hours
+                </a>
+                <a href="#" class="list-group-item">
+                    <span id="last7days" class="badge">0</span> Opened more than 24 hours ago but less than 7 days ago
+                </a>
+                <a href="#" class="list-group-item">
+                    <span id="earlierThanThat" class="badge">0</span> Opened more than 7 days ago
+                </a>
             </ul>
         </div>
         <div class="footer">
-            <p><span class="glyphicon glyphicon-heart"></span> Akshay Menon</p>
+            <p><a href="https://in.linkedin.com/in/akshaym91">Akshay Menon</a></p>
         </div>
     </div>
     <!-- build:js(.) scripts/vendor.js -->
