@@ -14,7 +14,12 @@ function findTotalOpenIssues() {
      * @type {[type]}
      */
     var location = $("#url")[0].value;
-    var myUrl = 'https://api.github.com/repos/' + location.substring(0, location.lastIndexOf('/'));
+    var myUrl;
+    if ($("#auth-token")[0].value != "") {
+        myUrl = 'https://api.github.com/repos/' + location.substring(0, location.lastIndexOf('/')) + '?access_token=' + $("#auth-token")[0].value;
+    } else {
+        myUrl = 'https://api.github.com/repos/' + location.substring(0, location.lastIndexOf('/'));
+    }
     $.ajax({
         type: "GET",
         url: myUrl,
@@ -33,6 +38,9 @@ function findTotalOpenIssues() {
  * @return {[type]}             [none]
  */
 function makeAllAjaxRequests(totalIssues) {
+    $("#last24hours")[0].innerHTML = 0;
+    $("#last7days")[0].innerHTML = 0;
+    $("#earlierThanThat")[0].innerHTML = 0;
     /**
      * [location Reads the url to parse and modify]
      * @type {[type]}
@@ -60,7 +68,11 @@ function makeAllAjaxRequests(totalIssues) {
      */
     var noOfPagesToGet = Math.floor(totalIssues / 30);
     for (var i = 0; i < noOfPagesToGet; i++) {
-        myUrl = 'https://api.github.com/repos/' + location + '?page=' + (i + 1);
+        if ($("#auth-token")[0].value != ""){
+            myUrl = 'https://api.github.com/repos/' + location + '?page=' + (i + 1) + '&access_token=' + $("#auth-token")[0].value;
+        } else {
+            myUrl = 'https://api.github.com/repos/' + location + '?page=' + (i + 1);
+        }
         $.ajax({
             type: "GET",
             url: myUrl,

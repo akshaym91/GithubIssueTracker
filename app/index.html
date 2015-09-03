@@ -42,7 +42,17 @@
                 <input id="url" type="text" class="form-control" placeholder="repository" aria-describedby="basic-addon1">
             </div>
             <br/>
+            <p class="lead">Authetication token</p>
+            <div class="input-group">
+                <input id="auth-token" type="text" class="form-control" placeholder="Authentication Token" aria-describedby="basic-addon1">
+                <div class="alert alert-info">
+                    <small>Github allows only few REST calls without authentication. If tracking fails, generate auth taken from Github. Authenticated requests get a higher rate limit.</small>
+                </div>
+            </div>
             <p><a id="trackButton" class="btn btn-lg btn-success" href="#"><span class="glyphicon glyphicon-search"> Track</span></a></p>
+            <div class="alert alert-info">
+                <small>If open issues fail to update, track again.</small>
+            </div>
         </div>
         <div>
             <ul class="list-group">
