@@ -5,7 +5,9 @@
  */
 $("#trackButton").click(function() {
     findTotalOpenIssues();
-    makeAllAjaxRequests(parseInt($("#totalOpenIssues")[0].innerHTML));
+    if (parseInt($("#totalOpenIssues")[0].innerHTML) !== 0){
+        makeAllAjaxRequests(parseInt($("#totalOpenIssues")[0].innerHTML));
+    }
 });
 
 function findTotalOpenIssues() {
@@ -79,16 +81,15 @@ function makeAllAjaxRequests(totalIssues) {
             dataType: "json",
             success: function(json) {
                 $.grep(json, function(element, index) {
-                    if (element.created_at >= dateYesterdayISO) {
+                    if (element.created_at > dateYesterdayISO) {
                         $("#last24hours")[0].innerHTML = parseInt($("#last24hours")[0].innerHTML) + 1;
                     }
-                    if (element.created_at < dateYesterdayISO && element.created_at >= dateAWeekBeforeISO) {
+                    if (element.created_at =< dateYesterdayISO && element.created_at > dateAWeekBeforeISO) {
                         $("#last7days")[0].innerHTML = parseInt($("#last7days")[0].innerHTML) + 1;
                     }
-                    if (element.created_at < dateAWeekBeforeISO) {
+                    if (element.created_at =< dateAWeekBeforeISO) {
                         $("#earlierThanThat")[0].innerHTML = parseInt($("#earlierThanThat")[0].innerHTML) + 1;
                     }
-
                 });
             },
             error: function(xhr) {
