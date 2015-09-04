@@ -31,6 +31,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "start": "grunt",
     "test": "grunt test"
   },
   "eslintConfig": {
