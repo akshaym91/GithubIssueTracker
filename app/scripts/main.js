@@ -5,7 +5,7 @@
  */
 $("#trackButton").click(function() {
     findTotalOpenIssues();
-    if (parseInt($("#totalOpenIssues")[0].innerHTML) !== 0){
+    if (parseInt($("#totalOpenIssues")[0].innerHTML) !== 0) {
         makeAllAjaxRequests(parseInt($("#totalOpenIssues")[0].innerHTML));
     }
 });
@@ -70,7 +70,7 @@ function makeAllAjaxRequests(totalIssues) {
      */
     var noOfPagesToGet = Math.floor(totalIssues / 30);
     for (var i = 0; i < noOfPagesToGet; i++) {
-        if ($("#auth-token")[0].value != ""){
+        if ($("#auth-token")[0].value != "") {
             myUrl = 'https://api.github.com/repos/' + location + '?page=' + (i + 1) + '&access_token=' + $("#auth-token")[0].value;
         } else {
             myUrl = 'https://api.github.com/repos/' + location + '?page=' + (i + 1);
@@ -81,13 +81,13 @@ function makeAllAjaxRequests(totalIssues) {
             dataType: "json",
             success: function(json) {
                 $.grep(json, function(element, index) {
-                    if (element.created_at > dateYesterdayISO) {
+                    if (element.created_at >= dateYesterdayISO) {
                         $("#last24hours")[0].innerHTML = parseInt($("#last24hours")[0].innerHTML) + 1;
                     }
-                    if (element.created_at =< dateYesterdayISO && element.created_at > dateAWeekBeforeISO) {
+                    if ((element.created_at < dateYesterdayISO) && (element.created_at >= dateAWeekBeforeISO)) {
                         $("#last7days")[0].innerHTML = parseInt($("#last7days")[0].innerHTML) + 1;
                     }
-                    if (element.created_at =< dateAWeekBeforeISO) {
+                    if (element.created_at < dateAWeekBeforeISO) {
                         $("#earlierThanThat")[0].innerHTML = parseInt($("#earlierThanThat")[0].innerHTML) + 1;
                     }
                 });
