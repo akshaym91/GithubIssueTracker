@@ -12,6 +12,7 @@ module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
+  //require('load-grunt-tasks')(grunt);
 
   // Automatically load required grunt tasks
   require('jit-grunt')(grunt, {
@@ -29,7 +30,34 @@ module.exports = function (grunt) {
 
     // Project settings
     config: config,
-
+    //Build control
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      pages: {
+        options: {
+          remote: 'git@github.com:akshaym91/GithubIssueTracker.git',
+          branch: 'gh-pages'
+        }
+      },
+      heroku: {
+        options: {
+          remote: 'git@heroku.com:issue-tracker-heroku.git',
+          branch: 'master'
+          //tag: pkg.version
+        }
+      },
+      local: {
+        options: {
+          remote: '../',
+          branch: 'build'
+        }
+      }
+    },
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -389,6 +417,7 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-build-control');
 
   grunt.registerTask('serve', 'start the server and preview your app', function (target) {
 
