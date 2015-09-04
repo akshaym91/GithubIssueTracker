@@ -25,6 +25,8 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  var pkg = require('./package.json');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -47,8 +49,8 @@ module.exports = function (grunt) {
       heroku: {
         options: {
           remote: 'git@heroku.com:issue-tracker-heroku.git',
-          branch: 'master'
-          //tag: pkg.version
+          branch: 'master',
+          tag: pkg.version
         }
       },
       local: {
