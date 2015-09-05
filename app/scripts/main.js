@@ -87,9 +87,7 @@ function makeAllAjaxRequests(totalIssues) {
                     if ((element.created_at < dateYesterdayISO) && (element.created_at >= dateAWeekBeforeISO)) {
                         $("#last7days")[0].innerHTML = parseInt($("#last7days")[0].innerHTML) + 1;
                     }
-                    if (element.created_at < dateAWeekBeforeISO) {
-                        $("#earlierThanThat")[0].innerHTML = parseInt($("#earlierThanThat")[0].innerHTML) + 1;
-                    }
+                    $("#earlierThanThat")[0].innerHTML = parseInt($("#totalOpenIssues")[0].innerHTML) - (parseInt($("#last7days")[0].innerHTML) + parseInt($("#last24hours")[0].innerHTML));
                 });
             },
             error: function(xhr) {
