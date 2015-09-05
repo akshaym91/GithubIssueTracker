@@ -33,7 +33,7 @@ module.exports = function (grunt) {
     // Project settings
     config: config,
     //Build control
-    buildcontrol: {
+    /*buildcontrol: {
       options: {
         dir: 'dist',
         commit: true,
@@ -59,7 +59,7 @@ module.exports = function (grunt) {
           branch: 'build'
         }
       }
-    },
+    },*/
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -419,7 +419,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-build-control');
+  //grunt.loadNpmTasks('grunt-build-control');
 
   grunt.registerTask('serve', 'start the server and preview your app', function (target) {
 
